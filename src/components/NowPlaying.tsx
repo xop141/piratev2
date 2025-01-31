@@ -11,12 +11,13 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-
-const NowPlaying = ({ sendData }) => {
+import { useRouter } from 'next/navigation';
+import { Movie } from '@/types/movie-type';
+const NowPlaying = () => {
     const url = 'https://image.tmdb.org/t/p/w500'
     const TMDB_BASE_URL = process.env.TMDB_BASE_URL;
     const TMDB_API_TOKEN = process.env.TMDB_API_TOKEN;
-    const [popular, setPopular] = useState([])
+    const [popular, setPopular] = useState<Movie[]>([])
     const getDATA = async () => {
         try {
             const response = await axios.get(`${TMDB_BASE_URL}/movie/now_playing?language=en-US&page=1`, {
@@ -34,12 +35,11 @@ const NowPlaying = ({ sendData }) => {
     useEffect(() => {
         getDATA()
     }, [])
-    const test = (id) => {
-        sendData(id)
-    }
-    const goToPage = () => {
-        router.push('/new-page');  // Navigate to '/new-page'
-    };
+     const router = useRouter();
+      const handleMovieClick = (id:Number) => {
+    
+        router.push(`/detail/${id}`);
+      };
 
     return (
         <div className="w-full h-fit flex flex-col items-center  ">
@@ -49,7 +49,7 @@ const NowPlaying = ({ sendData }) => {
                     {popular.slice(0, 5).map((movie) => {
                         return (
 
-                            <CarouselItem key={movie.id} id={movie.title} onClick={() => test(movie.id)} > <Image
+                            <CarouselItem key={movie.id} id={movie.title} onClick={() =>handleMovieClick(movie.id)} > <Image
                                 src={`${url}${movie.backdrop_path}`}
                                 width={375}
                                 height={246}

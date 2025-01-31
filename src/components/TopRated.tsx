@@ -4,13 +4,14 @@ import axios from "axios";
 import Image from "next/image";
 import { Star } from 'lucide-react';
 import { Button } from './ui/button';
+import { Movie } from '@/types/movie-type';
+import { useRouter } from 'next/navigation';
 
-
-const TopRated = ({ sendData }) => {
+const TopRated = () => {
     const url = 'https://image.tmdb.org/t/p/w500'
     const TMDB_BASE_URL = process.env.TMDB_BASE_URL;
     const TMDB_API_TOKEN = process.env.TMDB_API_TOKEN;
-  const [popular, setPopular] = useState([])
+  const [popular, setPopular] = useState<Movie[]>([])
     const getDATA = async () => {
       try {
         const response = await axios.get(`${TMDB_BASE_URL}//movie/top_rated?language=en-US&page=1`, {
@@ -28,25 +29,26 @@ const TopRated = ({ sendData }) => {
     useEffect(() => {
       getDATA()
     }, [])
-    const test=(id)=>{
-      sendData(id)
-      
-      
-      
-      
-    }
+     const router = useRouter();
+      const handleMovieClick = (id:Number) => {
+    
+        router.push(`/detail/${id}`);
+      };
+      const Jump=(type:string)=>{
+        router.push(`/More/${type}`);
+      }
   return (
     <div className="w-full h-fit flex flex-col items-center gap-y-[32px]">
 
     <div className='flex justify-between items-center  w-[100%]'>
         <p className='font-[600] text-white'>Top Rated</p>
-        <Button id='but' className='font-[600]'>see more</Button>
+        <Button id='but' className='font-[600]' onClick={()=>Jump("top_rated")}>see more</Button>
     </div>
     <div className="w-full h-fit flex flex-row justify-start gap-[20px] lg:gap-[32px] flex-wrap">
 
       {popular.slice(0,10).map((movie) => {
         return (
-          <div key={movie.title} className="w-[157.5px] bg-cardWhite flex flex-col rounded-[8px]" onClick={()=>test(movie.id)}>
+          <div key={movie.title} className="w-[157.5px] bg-cardWhite flex flex-col rounded-[8px]" onClick={()=>handleMovieClick(movie.id)}>
             <Image
               src={`${url}${movie.poster_path}`}
                width={157.5}
