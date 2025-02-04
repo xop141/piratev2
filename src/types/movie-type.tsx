@@ -15,6 +15,8 @@ export type Movie ={
     vote_average: number;
     vote_count: number;
     genres: { id: number; name: string }[];
+    name: string;
+    length: number
 }
 export type CrewMember = {
     id: number;

@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 const Page = () => {
     const params = useParams();
     const movieId = params.id;
-    const url = 'https://image.tmdb.org/t/p/w500';
+    const url = 'https://image.tmdb.org/t/p/';
     const TMDB_BASE_URL = process.env.TMDB_BASE_URL;
     const TMDB_API_TOKEN = process.env.TMDB_API_TOKEN;
     const [movie, setMovie] = useState<Movie | null>(null);
@@ -53,15 +53,15 @@ const Page = () => {
     const router = useRouter();
     const jumpTOtrailer=(id:number)=>{
         router.push(`/Trailer/${id}`);
-        
-        
-        
+    }
+    const jump=(genre:number)=>{
+        router.push(`/Genrepage/${genre}`);
     }
     return (
-        <div>
+        <div className='flex flex-col items-center'>
            
             {movie ? (
-                <div className='flex flex-col gap-[20px] px-[20px]'>
+                <div className='flex flex-col gap-[20px] px-[20px] lg:w-[80%] '>
                     <div className='flex justify-between'>
                         <div className='w-fit'>
                             <h2>{movie.title}</h2>
@@ -89,17 +89,22 @@ const Page = () => {
                         <Play/>
                         <p>Play trailer</p>
                         </Button> 
+                        <div className=' w-full h-[211px] md:h-[428px] lg:h-[700px]'>
                     <Image
-                        src={`${url}${movie.backdrop_path}`}
-                        width={375}
-                        height={211}
+                        src={`${url}original${movie.backdrop_path}`}
+                      
                         alt={movie.title}
+                     layout='fill'
+                       objectFit="cover"
+        className="rounded-[8px]"
                     />
+           
 </div>
-                    <div className='flex justify-between'>
+</div>
+                    <div className='flex justify-between ' >
                         <div className=''>
                             <Image
-                                src={`${url}${movie.poster_path}`}
+                                src={`${url}original${movie.poster_path}`}
                                 width={100}
                                 height={148}
                                 alt={movie.title}
@@ -108,7 +113,7 @@ const Page = () => {
                         <div className='h-full w-[60%] flex flex-col gap-[20px]'>
                             <div className='flex flex-row flex-wrap gap-[12px]'>
                                 {movie.genres.map((genre) => (
-                                    <Button className='w-fit h-[20px]' key={genre.id}>
+                                    <Button className='w-fit h-[20px]' key={genre.id} onClick={()=>jump(genre.id)} > 
                                         {genre.name}
                                     </Button>
                                 ))}

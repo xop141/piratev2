@@ -48,8 +48,8 @@ const UpComing = () => {
         <p className='font-[600] text-white'>Up Coming</p>
         <Button id='but' className='font-[600]' onClick={()=>Jump("upcoming")}>see more</Button>
     </div>
-    <div className="w-full h-fit flex flex-row justify-start gap-[20px] lg:gap-[32px] flex-wrap">
-
+    <div className="w-full h-fit flex justify-center">
+    <div className='flex lg:w-[80%]  bg-black lg:justify-start gap-[20px] flex-row flex-wrap md:justify-start sm:justify-between'>
       {popular.slice(0,10).map((movie) => {
         return (
           <div key={movie.title} className="w-[157.5px] bg-cardWhite flex flex-col rounded-[8px]" onClick={()=>handleMovieClick(movie.id)}>
@@ -66,8 +66,10 @@ const UpComing = () => {
               <h1 className='w-full h-[56px]'> {movie.title}</h1>
             </div>
           </div>
+          
         );
       })}
+      </div>
     </div>
   </div>
   )
