@@ -35,7 +35,7 @@ const showBAR=()=>{
 
   return (
     <div className='w-screen h-fit p-[20px] flex justify-center'>
-      <div className='flex w-full h-fit justify-between relative items-center '>
+      <div className='flex w-full h-fit justify-between relative items-center lg:w-[80%]'>
       <div
   className={`${
     isBAR === "hidden" ? "flex" : "hidden"

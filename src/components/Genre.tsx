@@ -43,23 +43,25 @@ const Genre = () => {
     const [genra,setGenra] = useState([])
 const router = useRouter();
       const jump = (genre:number,name:string  ) => {
-//         setGenra((prevgenre)=>[...prevgenre, genre])
-//  console.log(genra.join("%"));
+
 
     
-        router.push(`/Genrepage/${genre+name}`);
-        console.log(name);
+        router.push(`/Genrepage/${genre}`);
+      
         
       };
 
  
 
   return (
-    <div>
-        <DropdownMenu>
+    <div className='bg-green-300'>
+        <DropdownMenu >
         
   <DropdownMenuTrigger>
-    <Button>Genre</Button>
+ <div className='h-9 px-4 py-2 bg-primary text-primary-foreground shadow hover:bg-primary/90 flex justify-center items-center
+   inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none 
+   focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0
+ '>genre</div>
   </DropdownMenuTrigger>
   
   
@@ -73,7 +75,7 @@ const router = useRouter();
 
 
          <DropdownMenuItem key={genre.name} onClick={()=>jump(genre.id,genre.name)}>
-        <Badge>{genre.name}</Badge>
+        <Badge >{genre.name}</Badge>
          </DropdownMenuItem>
     )
    })}

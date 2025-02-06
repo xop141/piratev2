@@ -48,8 +48,8 @@ const Popular = () => {
         <p className='font-[600] text-white'>Popular</p>
         <Button id='but' className='font-[600]' onClick={()=>Jump("popular")}>see more</Button>
       </div>
-      <div className="w-full h-fit flex justify-center bg-green-300">
-      <div className='flex lg:w-[80%] lg:justify-start gap-[20px] flex-row flex-wrap md:justify-start sm:justify-between'>
+      <div className="w-full h-fit flex justify-center ">
+      <div className='flex lg:w-[80%] lg:justify-start gap-[20px] flex-row flex-wrap md:justify-start lg:gap-[32px]'>
               {popular.slice(0, 10).map((movie) => {
                 return (
                   <div key={movie.id} className="w-[157.5px] bg-cardWhite flex flex-col rounded-[8px]" onClick={() => handleMovieClick(movie.id)

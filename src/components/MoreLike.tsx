@@ -41,7 +41,7 @@ const MoreLike = () => {
   };
 
   return (
-    <div className='lg:w-[80%]'>
+    <div className='lg:w-[80%] bg-green-300 '>
       <div className="w-full p-[20px]">
         <div className="flex justify-between">
           <h1 className="text-[24px] font-[600]">More Like This</h1>
@@ -50,8 +50,8 @@ const MoreLike = () => {
       </div>
 
       
-      <div className="w-full h-fit flex justify-center bg-green-300"> 
-      <div className='bg-gray-300  w-full flex flex-row gap-[20px] flex-wrap justify-between md:justify-start sm:justify-start'>
+      <div className="w-full h-fit flex justify-center"> 
+      <div className='w-full flex flex-row gap-[20px] flex-wrap  md:justify-start sm:justify-start'>
         {popular.slice(0, 10).map((movie) => {
           return (
             <div
