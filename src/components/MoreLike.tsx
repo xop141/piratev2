@@ -3,16 +3,18 @@ import { Button } from './ui/button';
 import axios from 'axios';
 import { Movie } from '@/types/movie-type';
 import { useRouter, useParams } from 'next/navigation';
-
+import { Skeleton } from './ui/skeleton';
 const MoreLike = () => {
   const { id } = useParams(); 
   const url = 'https://image.tmdb.org/t/p/';
   const TMDB_BASE_URL = process.env.TMDB_BASE_URL;
   const TMDB_API_TOKEN = process.env.TMDB_API_TOKEN;
+  const [loading, setLoading] = useState(false)
 
   const [popular, setPopular] = useState<Movie[]>([]);
 
   const getDATA = async () => {
+    setLoading(true)
     try {
       const response = await axios.get(
         `${TMDB_BASE_URL}/movie/${id}/similar?language=en-US&page=1`,
@@ -26,6 +28,8 @@ const MoreLike = () => {
       console.log(response.data.results);
     } catch (err) {
       console.log(err);
+    } finally{
+      setLoading(false)
     }
   };
 
@@ -40,8 +44,11 @@ const MoreLike = () => {
     router.push(`/detail/${id}`);
   };
 
+
   return (
-    <div className='lg:w-[80%] bg-green-300 '>
+    
+    <div className='lg:w-[80%] '>
+     
       <div className="w-full p-[20px]">
         <div className="flex justify-between">
           <h1 className="text-[24px] font-[600]">More Like This</h1>

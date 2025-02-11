@@ -38,12 +38,11 @@ const backTOpage = ()=>{
 
 
 return (
-  <div className='h-screen flex items-center' onClick={backTOpage} >
+  <div className='h-screen flex items-center justify-center' onClick={backTOpage} >
       
           
                           <iframe
-          width="375"
-          height="210"
+          className=' w-[60%] h-[50%] sm:w-[375px] sm:h-[210px]'
           src={`https://www.youtube.com/embed/${trailerkey}`}
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"

@@ -21,7 +21,7 @@ const Page = () => {
    const params = useParams();
    const typo = params.id;
 
-  const url = 'https://image.tmdb.org/t/p/w500'
+  const url = 'https://image.tmdb.org/t/p/original'
   const TMDB_BASE_URL = process.env.TMDB_BASE_URL;
   const TMDB_API_TOKEN = process.env.TMDB_API_TOKEN;
 
@@ -30,7 +30,7 @@ const Page = () => {
 
   const getDATA = async () => {
     try {
-      const response = await axios.get(`${TMDB_BASE_URL}/movie/${typo}?language=en-US&page=1`, {
+      const response = await axios.get(`${TMDB_BASE_URL}/movie/${typo}?language=en-US&page=${currentPage}}`, {
         headers: {
           Authorization: `Bearer ${TMDB_API_TOKEN}`
         }
@@ -44,6 +44,10 @@ const Page = () => {
   useEffect(() => {
     getDATA();
   }, []);
+  useEffect(()=>{
+getDATA()
+  },[currentPage])
+
 
   const router = useRouter();
   const handleMovieClick = (id: Number) => {
@@ -52,7 +56,7 @@ const Page = () => {
 
   const add = () => {
     setCurrentPage((prev) => prev + 1);
-   
+
     
   };
 
@@ -61,16 +65,17 @@ const Page = () => {
   };
 
 
-  const startIdx = (currentPage - 1) * 10;
-  const endIdx = currentPage * 10;
+  // const startIdx = (currentPage - 1) * 10;  
+  // const endIdx = currentPage * 10;
 
   return (
     <div className="w-full h-fit flex flex-col items-center gap-y-[32px] ">
       <div className='flex justify-between items-center w-[100%] px-[20px]'>
         <p className='font-[600] text-white text-[24px]'>{typo}</p>
       </div>
-      <div className="w-full h-fit flex flex-row justify-start gap-[20px] lg:gap-[32px] flex-wrap px-[20px]">
-        {popular.slice(startIdx, endIdx).map((movie) => {
+      <div className='w-full flex justify-center'>
+      <div className="w-fit h-fit flex flex-row justify-start gap-[20px] lg:gap-[32px] flex-wrap px-[20px]">
+        {popular.slice(0, 20).map((movie) => {
           return (
             <div key={movie.id} className="w-[157.5px] bg-cardWhite flex flex-col rounded-[8px]" onClick={() => handleMovieClick(movie.id)}>
               <Image
@@ -87,6 +92,7 @@ const Page = () => {
             </div>
           );
         })}
+      </div>
       </div>
       <div>
         <Pagination>
