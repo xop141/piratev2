@@ -45,7 +45,7 @@ const UpComing = () => {
 
   return (
     <div className="w-full h-fit flex flex-col items-center gap-y-8 font-semibold text-lg overflow-hidden">
-      {/* Header */}
+
       <div className="flex justify-between items-center w-full max-w-5xl px-4">
       <p className={`${theme === "dark" ? "text-white" : "text-black"}`}>Top Rated</p>
         <Button className="font-bold" onClick={() => Jump("upcoming")}>
@@ -53,7 +53,7 @@ const UpComing = () => {
         </Button>
       </div>
 
-      {/* Movies Grid */}
+      
       <div className="w-full flex justify-center">
         <div className="flex flex-wrap gap-5 lg:gap-8 max-w-5xl">
           {upcoming.slice(0, 10).map((movie) => (

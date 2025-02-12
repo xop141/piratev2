@@ -40,22 +40,21 @@ const Header = () => {
           <X onClick={showBAR} className="cursor-pointer" />
         </div>
 
-        {/* Logo */}
+      
         <div
           className="flex gap-2 items-center cursor-pointer"
           onClick={JumpHOME}
         >
           <Film />
-        <p className={`${theme === "dark" ? "bg-gray-900" : "bg-white"} text-bold font-[600]`} >Movie Z</p>
+        <p className={`${theme === "dark" ? "bg-gray-900" : ""} text-bold font-[600]`} >Movie Z</p>
         </div>
 
-        {/* Desktop Menu */}
+ 
         <div className="hidden md:flex md:gap-3">
           <Genre />
           <SearchButton />
         </div>
 
-        {/* Theme and Mobile Menu */}
         <div className="flex gap-3">
           <div
             className="p-3 md:hidden border border-gray-300 shadow-sm rounded-md cursor-pointer"

@@ -52,7 +52,7 @@ const MoreLike = () => {
       <div className="w-full p-[20px]">
         <div className="flex justify-between">
           <h1 className="text-[24px] font-[600]">More Like This</h1>
-          <Button>See More</Button>
+        
         </div>
       </div>
 

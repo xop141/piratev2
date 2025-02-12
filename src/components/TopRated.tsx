@@ -45,7 +45,7 @@ const TopRated = () => {
 
   return (
     <div className="w-full h-fit flex flex-col items-center gap-y-8 font-semibold text-lg overflow-hidden">
-      {/* Header */}
+
       <div className="flex justify-between items-center w-full max-w-5xl px-4">
       <p className={`${theme === "dark" ? "text-white" : "text-black"}`}>Top Rated</p>
         <Button className="font-bold" onClick={() => Jump("top_rated")}>

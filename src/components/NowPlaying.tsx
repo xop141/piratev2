@@ -61,7 +61,7 @@ const NowPlaying = () => {
               id={movie.title}
               onClick={() => handleMovieClick(movie.id)}
             >
-              {/* Movie Banner Image */}
+           
               <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh]">
                 <Image
                   src={`${url}${movie.backdrop_path}`}
@@ -72,12 +72,11 @@ const NowPlaying = () => {
                 />
               </div>
 
-              {/* Movie Info Section */}
               <div className="flex flex-col py-5 gap-4 lg:w-[40%] md:w-[80%] sm:w-full lg:absolute lg:bottom-10 px-4">
                 <div className="flex justify-between items-center">
                   <div>
-                    <h2 className="text-lg">Now Playing:</h2>
-                    <h1 className="text-xl font-semibold">{movie.original_title}</h1>
+                    <h2 className="text-lg font-[800]">Now Playing:</h2>
+                    <h1 className="text-xl font-inter font-[600] text-indigo-700">{movie.original_title}</h1>
                   </div>
 
                   <div className="flex items-center gap-1">
@@ -86,10 +85,8 @@ const NowPlaying = () => {
                   </div>
                 </div>
 
-                {/* Movie Overview */}
-                <p className="text-sm">{movie.overview}</p>
+                <p className="text-sm font-[600]">{movie.overview}</p>
 
-                {/* Watch Trailer Button */}
                 <Button
                   className="w-[145px] h-[40px] flex items-center gap-2 bg-indigo-600 text-white hover:bg-indigo-500"
                   onClick={() => jumpTOtrailer(movie.id)}
@@ -102,7 +99,6 @@ const NowPlaying = () => {
           ))}
         </CarouselContent>
 
-        {/* Carousel Navigation */}
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>

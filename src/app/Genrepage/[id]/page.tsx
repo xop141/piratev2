@@ -14,9 +14,9 @@ const Page = () => {
   const url = "https://image.tmdb.org/t/p/original";
   const TMDB_BASE_URL = process.env.TMDB_BASE_URL;
   const TMDB_API_TOKEN = process.env.TMDB_API_TOKEN;
-  const searchParams = useSearchParams();
-  const [genre, setGenre] = useState<{ id: number; name: string }[]>([]);
-  const [selected, Setselected] = useState<number[]>([]);
+  
+  const [genre, setGenre] = useState<any[]>([]);
+  const [selected, Setselected] = useState<any[]>([]);
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

@@ -66,7 +66,7 @@ const SearchButton = () => {
 
   return (
     <div id="searchbar" className="flex flex-col items-center">
-      {/* Search Bar */}
+
       <div className={`w-[100%] flex items-center rounded-[8px] border px-[12px]`}>
         <Search />
         <Input
@@ -77,7 +77,7 @@ const SearchButton = () => {
         />
       </div>
 
-      {/* Search Results or Skeleton */}
+   
       <div className="w-fit h-fit absolute z-10 top-[70px]">
         {loading ? (
           <div className="mt-4 flex justify-center flex-col gap-[10px] bg-gray-900 p-[15px]">

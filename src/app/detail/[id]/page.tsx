@@ -20,7 +20,7 @@ const Page = () => {
     const TMDB_API_TOKEN = process.env.TMDB_API_TOKEN;
 
     // state shit
-    const [movie, setMovie] = useState<Movie | null>(null);
+    const [movie, setMovie] = useState<Movie | null>();
     const [crew, setCrew] = useState<CrewMember[] | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     
