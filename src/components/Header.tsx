@@ -31,9 +31,9 @@ const Header = () => {
           className={`${
             isBAR === "hidden" ? "hidden" : "flex"
           } ${theme === "dark" ? "bg-gray-900" : "bg-white"} 
-          absolute top-0 left-0 w-full h-full items-center z-50 p-5`}
+          absolute top-0 left-0 w-full h-full items-center z-50 p-5 gap-[10px] flex justify-between`}
         >
-          <div className="bg-gray-300 p-4 rounded-md w-full">
+          <div className="bg-gray-300 lg:p-2 md:p-4 sm:p-2 rounded-md w-min ">
             <Genre />
           </div>
           <SearchButton />
